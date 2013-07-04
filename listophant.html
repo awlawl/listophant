@@ -1,0 +1,18 @@
+<head>
+<title>Listophant</title>
+</head>
+
+<body>
+{{> tasktemplate}}
+</body>
+
+
+<template name="tasktemplate">
+	hi<ul>
+	{{#each tasks}}
+		<li><input class='donecheckbox' type="checkbox" {{{done_checkbox}}}/> {{name}}</li>
+	{{/each}}
+</ul>
+
+
+</template>
