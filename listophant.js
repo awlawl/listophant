@@ -28,13 +28,17 @@ if (Meteor.isClient) {
 		var list = Lists.find({}).fetch()[0];
 		if (list) {
 			listid = list._id;
-			return Tasks.find({listid:listid});
+			return Tasks.find({listid:listid},{sort:{isDone:1,timestamp:1}});
 			
 		}
 	};
 	
 	Template.tasktemplate.done_checkbox = function() {
-		return this.isDone ? 'checked="checked"':''
+		return this.isDone ? 'checked="checked" class="doneTask"':''
+	};
+	
+	Template.tasktemplate.done_task = function() {
+		return this.isDone ? 'class="doneTask"' : '';
 	};
 
 	
@@ -101,5 +105,5 @@ if (Meteor.isServer) {
 }
 
 function saveTask(id, taskName) {
-	Tasks.insert({listid:id, name: taskName, isDone: false});
+	Tasks.insert({listid:id, name: taskName, isDone: false, timestamp: Date.now()});
 }

@@ -11,7 +11,7 @@
 <input type='text' id="newtask"/>
 <ul>
 	{{#each tasks}}
-		<li><input class='donecheckbox' type="checkbox" {{{done_checkbox}}}/> {{name}}</li>
+		<li {{{done_task}}><input class='donecheckbox' type="checkbox" {{{done_checkbox}}}/> {{name}}</li>
 	{{/each}}
 </ul>
 
